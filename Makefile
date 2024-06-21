@@ -8,16 +8,13 @@ PRETTIER := ./node_modules/.bin/prettier
 JEST := ./node_modules/.bin/jest
 TSC := ./node_modules/.bin/tsc
 
-test-jest:
-	@echo "Running jest..."
-	@IS_TEST=1 $(JEST) --passWithNoTests --maxWorkers=1
-
-test: test-jest
+test: 
+	npm test
 
 install:
 	npm install
 
-build:
+build: test
 	@echo "Building..."
 	@rm -rf ./dist/
 	@$(TSC) --declaration
